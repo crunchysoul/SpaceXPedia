@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SideMenuSwift
 
 class WindowManager {
     
@@ -63,25 +64,30 @@ class WindowManager {
     }
     
     func showMainUserInterface() {
-        tabBarController = UITabBarController()
-        guard let tabBarController = tabBarController else { return }
-//        tabBarController.delegate = self
         
-        self.tabs = [.launches, .rockets]
+        let sideMenuController = SideMenuController(contentViewController: UINavigationController(rootViewController: LaunchesViewController(viewModel: LaunchesViewModel(api: SpaceXAPI))),
+                                                    menuViewController: SideViewController())
+        rootNavigationController.pushViewController(sideMenuController, animated: false)
         
-        tabBarController.viewControllers = tabs.enumerated().map { (idx, tab) -> UIViewController in
-            let viewController = tab.viewController()
-            let tabBarItem = UITabBarItem(title: tab.title, image: tab.itemImage?.withRenderingMode(.alwaysOriginal), tag: idx)
-//            tabBarItem.imageInsets = showTextLabels ? .zero : UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
-//            tabBarItem.selectedImage = tab.itemImage
-            viewController.tabBarItem = tabBarItem
-//            viewController.navigationItem.backBarButtonItem = UIBarButtonItem.backButton()
-            return UINavigationController(rootViewController: viewController)
-        }
-        
-        tabBarController.tabBar.isHidden = true
-        
-        rootNavigationController.pushViewController(tabBarController, animated: false)
+//        tabBarController = UITabBarController()
+//        guard let tabBarController = tabBarController else { return }
+////        tabBarController.delegate = self
+//
+//        self.tabs = [.launches, .rockets]
+//
+//        tabBarController.viewControllers = tabs.enumerated().map { (idx, tab) -> UIViewController in
+//            let viewController = tab.viewController()
+//            let tabBarItem = UITabBarItem(title: tab.title, image: tab.itemImage?.withRenderingMode(.alwaysOriginal), tag: idx)
+////            tabBarItem.imageInsets = showTextLabels ? .zero : UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
+////            tabBarItem.selectedImage = tab.itemImage
+//            viewController.tabBarItem = tabBarItem
+////            viewController.navigationItem.backBarButtonItem = UIBarButtonItem.backButton()
+//            return UINavigationController(rootViewController: viewController)
+//        }
+//
+//        tabBarController.tabBar.isHidden = true
+//
+//        rootNavigationController.pushViewController(tabBarController, animated: false)
     }
     
     func rootViewController(for tab: Tab) -> UIViewController? {

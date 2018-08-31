@@ -103,6 +103,8 @@ class LaunchesViewController: UIViewController {
         
 //        searchController.isActive = true
 //        searchController.isActive = false
+        
+        sideMenuController?.revealMenu()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

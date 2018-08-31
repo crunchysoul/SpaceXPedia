@@ -5,7 +5,7 @@ target 'SpaceX' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
-#  pod 'Reveal-SDK', '17'
+  pod 'Reveal-SDK', '17'
 
   # Analytics
   pod 'Fabric', '1.7.7'
@@ -23,6 +23,7 @@ target 'SpaceX' do
   pod 'youtube-ios-player-helper', '0.1.6'
   pod 'pop', '1.0.10'
   pod 'SwiftRichString', '2.0.1'
+  pod 'SideMenuSwift', '0.5.0'
 
   # Reactive
   pod 'RxSwift', '4.2.0'
